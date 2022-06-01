@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://6qxu7tq71rsg"]
+
+[ext_resource type="Texture2D" uid="uid://b2alysgsbht7i" path="res://tilemap.png" id="1_msib7"]
+[ext_resource type="Script" path="res://Grid.gd" id="2_6rbob"]
+[ext_resource type="Script" path="res://UIHoverCheck.gd" id="3_ghi0t"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_172wt"]
+texture = ExtResource( "1_msib7" )
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+1:0/next_alternative_id = 2
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_mehoo"]
+tile_size = Vector2i(8, 8)
+sources/0 = SubResource( "TileSetAtlasSource_172wt" )
+
+[node name="TileMap" type="TileMap"]
+tile_set = SubResource( "TileSet_mehoo" )
+cell_quadrant_size = 8
+format = 2
+script = ExtResource( "2_6rbob" )
+uiStopperPath = NodePath("UIButtons/UIStopper")
+
+[node name="UIButtons" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SandButton" type="Button" parent="UIButtons"]
+offset_right = 47.0
+offset_bottom = 40.0
+text = "Sand"
+
+[node name="WaterButton" type="Button" parent="UIButtons"]
+offset_left = 51.0
+offset_right = 106.0
+offset_bottom = 40.0
+text = "Water"
+
+[node name="StoneButton" type="Button" parent="UIButtons"]
+offset_left = 110.0
+offset_right = 163.0
+offset_bottom = 40.0
+text = "Stone
+"
+
+[node name="OilButton" type="Button" parent="UIButtons"]
+offset_left = 167.0
+offset_right = 197.0
+offset_bottom = 40.0
+text = "Oil"
+
+[node name="UIStopper" type="Node2D" parent="UIButtons"]
+script = ExtResource( "3_ghi0t" )
+
+[node name="Camera2D" type="Camera2D" parent="."]
